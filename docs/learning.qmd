@@ -1,0 +1,45 @@
+---
+title: "Reproducible Document"
+author: "Oliver Bonde van Zwol"
+format: html
+---
+
+```{r setup}
+
+library("tidyverse")
+
+```
+
+
+## About me
+
+-   Oliver
+-   PhD
+
+Just started on a **PhD** at *FGM*
+
+## Simple code
+
+```{r}
+3 * 3
+```
+
+
+
+
+## Writing R code
+
+2+2
+
+```{r}
+2+2
+```
+
+
+
+
+
+
+
+
+
