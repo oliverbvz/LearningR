@@ -11,7 +11,6 @@ format: html
 library("tidyverse")
 
 post_meal_data <- read.csv2(here::here("data/post-meal-insulin.csv"))
-
 ```
 
 ## About me
@@ -35,7 +34,7 @@ Just started on a **PhD** at *FGM*
 2+2
 
 ```{r}
-2+2
+2 + 2
 ```
 
 ## Testing for Git
@@ -49,7 +48,6 @@ It is really cold outside
 post_meal_data
 
 glimpse(post_meal_data)
-
 ```
 
 ## Plot one continous variable
@@ -59,8 +57,6 @@ glimpse(post_meal_data)
 #| label: fig-bmi-histo
 ggplot(post_meal_data, aes(x = BMI)) +
   geom_histogram()
-
-
 ```
 
 See @fig-bmi-histo
@@ -80,32 +76,30 @@ See @fig-group-bar above for a cool plot!
 ## Plotting two discrete variables
 
 ```{r}
-
-
-ggplot(post_meal_data, aes(x = Group, fill = as.character(glykemi))) + 
+ggplot(post_meal_data, aes(x = Group, fill = as.character(glykemi))) +
   geom_bar(position = position_dodge())
-
-
-
-
 ```
 
 
 ## Side by side plot
 ```{r fig-bmi-glycemia}
 #| fig-cap: "BMI and glycemia, side by side"
-#| fig-subcap: 
+#| fig-subcap:
 #|   - "Distribution of BMI."
 #|   - "Number of those with glycemia."
 #| layout-ncol: 2
-ggplot(post_meal_data, aes( x =BMI)) +
+ggplot(post_meal_data, aes(x = BMI)) +
   geom_histogram()
 ggplot(post_meal_data, aes(x = glykemi)) +
   geom_bar()
-
-
-
-
 ```
 
+## Plotting two continuous variables
 
+```{r}
+#| fig-cap: "Scatterplot of BMI and the area under the curve for glucose"
+#| label: fig-bmi-auc-pg
+ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
+  geom_point() +
+  geom_smooth()
+```
