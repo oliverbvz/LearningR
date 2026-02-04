@@ -14,6 +14,15 @@ post_meal_data <- read.csv2(here::here("data/post-meal-insulin.csv"))
 
 
 small_post_meal_data <- select(post_meal_data, id, Age, BMI, Group, auc_pg, auc_ins, glykemi) # make a new df with only the selected columns
+
+
+tidier_post_meal_data <- small_post_meal_data %>%
+  rename(
+    auc_glucose = auc_pg,
+    auc_insulin = auc_ins
+  ) %>%
+  filter(glykemi == 0) %>%
+  select(-glykemi)
 ```
 
 ## About me
@@ -125,7 +134,6 @@ select(post_meal_data, contains("0")) # selects all columns containing 0
 ```
 
 
-
 ## Renaming columns
 
 ```{r}
@@ -134,4 +142,78 @@ small_post_meal_data %>%
     auc_glucose = auc_pg,
     auc_insulin = auc_ins
   )
+```
+
+
+
+## Filtering data
+
+
+```{r}
+small_post_meal_data %>%
+  filter(glykemi == 1)
+
+small_post_meal_data %>%
+  filter(BMI >= 25)
+
+small_post_meal_data %>% # Filter for only control
+  filter(Group == "CTR")
+
+
+small_post_meal_data %>%
+  filter(Group == "CTR" | BMI >= 25)
+```
+
+
+
+
+## Practice with filter and mutate
+
+```{r}
+# Task 1.
+post_meal_data |>
+  filter(BMI >= 25 & BMI <= 40 & Group == "FDR")
+
+# Task 2.
+post_meal_data |>
+  mutate(
+    percent_body_fat = (Fat.mass.DXA / Weight) * 100
+  ) |>
+  filter(percent_body_fat > 30)
+```
+
+
+
+
+
+
+
+
+
+
+## Select and rename tasks
+
+```{r}
+# Task 1.
+post_meal_data |>
+  select(contains("OGTT"))
+
+# Task 2.
+post_meal_data |>
+  select(contains(".."), -contains("..."))
+
+# Task 3.
+post_meal_data |>
+  rename(
+    p.glucose.minus5.OGTT = P.Glucose..5.OGTT,
+    Insulin.minus5.OGTT.X = Insulin..5.OGTT.X
+  )
+
+# Task 4.
+basic_info <- select(post_meal_data, id, BMI, Length, Weight, Age)
+rename(basic_info, Height = Length)
+
+post_meal_data %>%
+  select(id, BMI, Length, Weight, Age) %>%
+  rename(Height = Length)
 ```
