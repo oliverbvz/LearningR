@@ -2,6 +2,8 @@ TODO: Add more to the title of your project here
 
 Oliver learning R introductory
 
+Added this for github training
+
 # LearningR:
 
 TODO: Give a brief description of what your project is about
