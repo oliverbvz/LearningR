@@ -5,11 +5,14 @@ format: html
 ---
 
 ```{r setup}
+#| message: false
+#| warning: false
 
 library("tidyverse")
 
-```
+post_meal_data <- read.csv2(here::here("data/post-meal-insulin.csv"))
 
+```
 
 ## About me
 
@@ -40,6 +43,14 @@ Just started on a **PhD** at *FGM*
 It is really cold outside
 
 
+## Showing the data
+
+```{r}
+post_meal_data
+
+glimpse(post_meal_data)
+
+```
 
 
 
