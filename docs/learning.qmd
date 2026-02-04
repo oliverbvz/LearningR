@@ -52,5 +52,16 @@ glimpse(post_meal_data)
 
 ```
 
+## Plot one continous variable
 
+```{r}
+#| fig-cap: "Distribution of BMI."
+#| label: fig-bmi-histo
+ggplot(post_meal_data, aes(x = BMI)) +
+  geom_histogram()
+
+
+```
+
+See @fig-bmi-histo
 
