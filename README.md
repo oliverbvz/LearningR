@@ -4,6 +4,8 @@ Oliver learning R introductory
 
 Added this for github training
 
+Added this for "pull" training
+
 # LearningR:
 
 TODO: Give a brief description of what your project is about
