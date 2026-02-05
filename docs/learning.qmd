@@ -228,3 +228,28 @@ post_meal_data |>
   ) |>
   filter(percent_body_fat > 30)
 ```
+
+
+## Visualizing with a jitter plot
+
+```{r}
+tidied_post_meal_data %>%
+  mutate(overweight = if_else(BMI >= 25, "overweight", "not overweight")) %>%
+  ggplot(aes(x = overweight, y = insulin_glucose_ratio)) +
+  geom_jitter() # within a ggplot it is not possible to pipe, thus + is needed
+```
+
+## Plotting three or more variables
+
+```{r}
+tidied_post_meal_data %>%
+  filter(BMI < 30) %>%
+  mutate(young = if_else(Age < 40, "young", "old")) %>%
+  ggplot(aes(x = BMI, y = insulin_glucose_ratio, colour = Group)) +
+  geom_point() +
+  facet_grid(rows = vars(young)) + # rows facet in rows and cols = facet in columns
+  labs(
+    x = "Body Mass Index (BMI)",
+    y = "Insulin to glucose ratio"
+  )
+```
